@@ -1,7 +1,7 @@
 安装docker：
 yum install -y docker
 
-编辑/etc/sysconfig/docker文件，配置docker加速器和公司仓库：
+编辑/etc/sysconfig/docker文件，配置docker加速器和仓库：
 ```
 # Modify these options if you want to change the way the docker daemon runs
 OPTIONS='--selinux-enabled --iptables=false --log-driver=journald --registry-mirror=https://btnx8064.mirror.aliyuncs.com'
@@ -22,7 +22,7 @@ DOCKER_CERT_PATH=/etc/docker
 # If you have a registry secured with https but do not have proper certs
 # distributed, you can tell docker to not look for full authorization by
 # adding the registry to the INSECURE_REGISTRY line and uncommenting it.
-INSECURE_REGISTRY='--insecure-registry docker.hikvision.com.cn'
+INSECURE_REGISTRY='--insecure-registry hub.docker.com'
 ```
 registry-mirror 加速器配置
 INSECURE_REGISTRY 仓库地址配置
