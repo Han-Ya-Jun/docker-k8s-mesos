@@ -23,4 +23,4 @@ yum makecache
 ```
 
 增加dockerHub加速器
-OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=https://btnx8064.mirror .aliyuncs.com'
+OPTIONS='--selinux-enabled --log-driver=journald --registry-mirror=https://yy71r5tm.mirror.aliyuncs.com'
