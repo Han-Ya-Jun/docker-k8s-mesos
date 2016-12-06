@@ -4,7 +4,7 @@ yum install -y docker
 编辑/etc/sysconfig/docker文件，配置docker加速器和仓库：
 ```
 # Modify these options if you want to change the way the docker daemon runs
-OPTIONS='--selinux-enabled --iptables=false --log-driver=journald --registry-mirror=https://btnx8064.mirror.aliyuncs.com'
+OPTIONS='--selinux-enabled --iptables=false --log-driver=journald --registry-mirror=https://yy71r5tm.mirror.aliyuncs.com'
 DOCKER_CERT_PATH=/etc/docker
 
 # If you want to add your own registry to be used for docker search and docker
