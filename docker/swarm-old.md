@@ -4,8 +4,7 @@
 - install the docker
 
 ### 创建consul
-- 使用docker run -d -p "8400:8400" -p "8500:8500" -v /var/consul/data:/data --name consul --restart=always \
-  consul-server:0.6.3 -bootstrap   -data-dir=/data
+- 使用docker run -d -p "8400:8400" -p "8500:8500" -v /var/consul/data:/data --name consul --restart=always consul-server:0.6.3 -bootstrap data-dir=/data
 
 ### 创建swarm manage
 - 使用docker run -d -p 3376:2375 --name swarm-master --restart=always swarm manage consul://${ip}:8500
