@@ -1,4 +1,4 @@
-# docker swarm
+# docker swarm new way
 
 ### 验证docker swarm
 
