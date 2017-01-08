@@ -1,6 +1,5 @@
 # docker network
-, return 172.18.0.2
-- exec docker inspect -f ''
+
 ### 验证docker network
 - install docker 1.12
 - use docker network shell, and return the docker network info
@@ -15,9 +14,9 @@
 - 使用docker run -dt --name c2 --network n2 alpine sh
 - 使用docker run -dt --name c3 --network n1 alpine sh
 - 运行docker exec c1 ping c2和docker exec c1 ping c3，c1跟c3是能ping通的
-- exec shell: docker inspect -f '{{.NetworkSettings.Networks.n1.IPAddress}}' c1 then return 172.18.0.2
-- exec shell: docker inspect -f '{{.NetworkSettings.Networks.n2.IPAddress}}' c2 then return 172.19.0.2
-- exec shell：docker inspect -f '{{.NetworkSettings.Networks.n1.IPAddress}}' c3 then return 172.18.0.3
+- exec shell: docker inspect -f '{{.NetworkSettings.Networks.n1.IPAddress}}' c1   then return 172.18.0.2
+- exec shell: docker inspect -f '{{.NetworkSettings.Networks.n2.IPAddress}}' c2   then return 172.19.0.2
+- exec shell：docker inspect -f '{{.NetworkSettings.Networks.n1.IPAddress}}' c3   then return 172.18.0.3
 - yes you got this
 
 ### 网络跨节点
@@ -25,4 +24,4 @@
 - 使用docker network create o1 --driver overlay 
 - 使用docker service create --name whoami --replicas 3 --network o1 --publish 8000:8000 jwilder/whoami
 - use shell: docker service ls查看具体的容器
-- use shell: docker exec ${whoamione-container} ping ${whoamitwo-container}
+- use shell: docker exec ${whoami-1-container} ping ${whoami-2-container}
