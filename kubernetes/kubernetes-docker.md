@@ -35,7 +35,8 @@
 
 ## start the k8s master node
 - exec the command below to start the apiserver
-  kube-apiserver \
+```
+kube-apiserver \
    --logtostderr=true \
    --v=2 \
    --allow-privileged=false \
@@ -49,9 +50,11 @@
    --tls-private-key-file=${HOME}/cert/server.key \
    --tls-cert-file=${HOME}/cert/server.crt \
    --cors-allowed-origins='.*' \
-   >/tmp/kube-apiserver.log 2>&1 &
-    
+   > /tmp/kube-apiserver.log 2>&1 &
+```  
+
 - exec the command below to start the controller-manager
+```  
   kube-controller-manager \
    --logtostderr=true \
    --v=2 \
@@ -59,27 +62,33 @@
    --service-account-private-key-file=${HOME}/cert/server.key \
    --root-ca-file=${HOME}/cert/ca.crt \
    --kubeconfig=${HOME}/.kube/config \
-   >/tmp/kube-controller-manager.log 2>&1 &
-
+   > /tmp/kube-controller-manager.log 2>&1 &
+```
 - exec the command below to start the scheduler
+```  
   kube-scheduler \
    --logtostderr=true \
    --v=2 \
    --master=https://k8s01:6443 \
    --kubeconfig=${HOME}/.kube/config \
    >/tmp/kube-scheduler.log 2>&1 &
+```
 
 ## start the k8s node node 
-- sudo kube-proxy \
+- exec the command to start the kube-proxy
+```
+  sudo kube-proxy \
    --logtostderr=true \
    --v=2 \
    --master=https://k8s01:6443 \
    --kubeconfig=${HOME}/.kube/config \
    --hostname-override=$(hostname) \
    --proxy-mode=iptables \
-   >/tmp/kube-proxy.log 2>&1 &
-
-- sudo kubelet \
+   > /tmp/kube-proxy.log 2>&1 &
+```
+- exec the command to start the kubelet
+```
+sudo kubelet \
     --logtostderr=true \
     --v=2 \
     --api-servers=https://k8s01:6443 \
@@ -90,8 +99,8 @@
     --kubeconfig=${HOME}/.kube/config \
     --cluster-dns=10.100.0.10 \
     --cluster-domain=cluster.local \
-    >/tmp/kubelet.log 2>&1 &
-
+    > /tmp/kubelet.log 2>&1 &
+```
 ## start the dns 
 - kubectl create -f skydns-rc.yaml
 
@@ -99,7 +108,6 @@
 
 
 ## start the dashboard
-
 - kubectl create -f dashboard-rc.yaml
 
 - kubectl create -f dashboard-svc.yaml
