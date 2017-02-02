@@ -2,6 +2,7 @@
 
 ## init etcd single
 - exec the command below
+```
   docker run -d -p 2379:2379 -p 4001:4001 --restart=always --name etcd etcd:2.2.5 \
     --name etcd0 \
     --advertise-client-urls http://k8s01:2379 \
@@ -12,26 +13,23 @@
     --initial-cluster etcd0=http://k8s01:2380 \
     --initial-cluster-state new \
     --force-new-cluster
+```
 
 ## set the flannel
 - exec the command below
-  etcdctl set /coreos.com/network/config '{ "Network": "172.18.0.0/16" }'
-
-- sudo flanneld --etcd-endpoints="http://k8s01:2379" --iface="eth0" --ip-masq=true >/tmp/flanneld.log 2>&1 &
-
+```
+etcdctl set /coreos.com/network/config '{ "Network": "172.18.0.0/16" }'
+sudo flanneld --etcd-endpoints="http://k8s01:2379" --iface="eth0" --ip-masq=true >/tmp/flanneld.log 2>&1 &
+```
 
 ## set docker use flannel connect
-
-- sudo mk-docker-opts.sh -d /run/flannel_docker_opts.env -i
-
-- source /run/flannel/subnet.env
-
-- sudo ifconfig docker0 ${FLANNEL_SUBNET}
-
-- sudo rm /var/run/docker.pid
-
-- sudo systemctl restart docker
-
+```
+sudo mk-docker-opts.sh -d /run/flannel_docker_opts.env -i
+source /run/flannel/subnet.env
+sudo ifconfig docker0 ${FLANNEL_SUBNET}
+sudo rm /var/run/docker.pid
+sudo systemctl restart docker
+```
 
 ## start the k8s master node
 - exec the command below to start the apiserver
