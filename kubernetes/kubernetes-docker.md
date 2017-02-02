@@ -100,13 +100,13 @@ sudo kubelet \
     > /tmp/kubelet.log 2>&1 &
 ```
 ## start the dns 
-- kubectl create -f skydns-rc.yaml
+- kubectl create -f skydns/skydns-rc.yaml
 
-- kubectl create -f skydns-svc.yaml
+- kubectl create -f skydns/skydns-svc.yaml
 
 
 ## start the dashboard
-- kubectl create -f dashboard-rc.yaml
+- kubectl create -f ui/dashboard-rc.yaml
 
-- kubectl create -f dashboard-svc.yaml
+- kubectl create -f ui/dashboard-svc.yaml
 
