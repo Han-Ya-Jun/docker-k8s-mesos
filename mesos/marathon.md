@@ -7,3 +7,4 @@
 
 ### start the marathon
 - ./bin/start --master zk://192.168.199.235:2181/mesos --zk zk://192.168.199.235:2181/marathon
+- also other two server
