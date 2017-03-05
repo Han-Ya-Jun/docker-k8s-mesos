@@ -1,0 +1,22 @@
+{
+  "id": "cmd-demo-group",
+  "apps": [
+    {
+      "id": "demo-1"
+      "cmd": "python3 -m http.server",
+      "cpus": 1,
+      "mem": 32,
+      "disk": 32,
+      "instances": 1,
+      "dependencies": [ "/cmd-demo-group/demo-2" ]
+    },
+    {
+      "id": "demo-2"
+      "cmd": "sleep 1h",
+      "cpus": 0.5,
+      "mem": 32,
+      "disk": 32,
+      "instances": 2
+    }
+  ]
+}

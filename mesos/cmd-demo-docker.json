@@ -1,0 +1,20 @@
+{
+  "id": "cmd-demo-docker",
+  "cmd": "python3 -m http.server",
+  "cpus": 1,
+  "mem": 32,
+  "disk": 32,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "python:3-alpine",
+      "network": "BRIDGE",
+      "portMappings": [{
+        "containerPort": 8000,
+        "hostPort": 31080,
+        "protocol": "tcp"
+      }]
+    }
+  }
+}

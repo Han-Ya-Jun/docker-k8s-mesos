@@ -1,0 +1,8 @@
+{
+  "id": "cmd-demo",
+  "cmd": "python3 -m http.server",
+  "cpus": 1,
+  "mem": 32,
+  "disk": 32,
+  "instances": 1
+}
