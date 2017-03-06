@@ -8,7 +8,7 @@
 ### start the marathon
 - ./bin/start --master zk://192.168.199.235:2181/mesos --zk zk://192.168.199.235:2181/marathon
 - also start the marathon on the other two server
-- you can use nginx to marathon load balance or use marathonLB
+- you can use marathon-lb to manage the marathon loadbalance
 
 ### use marathon to build the deployment
 - build the json file named cmd-demo.json
@@ -47,3 +47,8 @@
 ### mesos unified container
 - build the json file named cmd-demo-uc.json
 - use the command [dcos marathon app add cmd-demo-uc.json] to build the app
+
+### marathon-lb
+- use docker to start the marathon-lb [docker run --name='lb' -d -e PORTS=9090 --net=host --privileged mesosphere/marathon-lb [sse|poll] --marathon http://192.168.199.235:8080 --group mylb --health-check]
+- build the build the json file named cmd-demo-lb.json
+- use the command [dcos marathon app add cmd-demo-lb.json] to build the app
