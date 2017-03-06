@@ -52,3 +52,6 @@
 - use docker to start the marathon-lb [docker run --name='lb' -d -e PORTS=9090 --net=host --privileged mesosphere/marathon-lb [sse|poll] --marathon http://192.168.199.235:8080 --group mylb --health-check]
 - build the build the json file named cmd-demo-lb.json
 - use the command [dcos marathon app add cmd-demo-lb.json] to build the app
+- use the command [curl -H 'Host: mylb.xiaobaxi.com' http://192.168.199.235] to see the python server page
+- use the command [curl  http://192.168.199.235:31080] to see the python server page
+- use the command [curl -vH "http:X-Marathon-App-Id: /cmd-demo-lb" 192.168.199.235:9091] to see the python server page
